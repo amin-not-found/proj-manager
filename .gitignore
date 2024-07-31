@@ -1,0 +1,5 @@
+.project.json
+.vscode
+bin
+obj
+old

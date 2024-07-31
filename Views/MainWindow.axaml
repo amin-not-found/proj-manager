@@ -1,0 +1,71 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:ProjManager.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        d:DesignWidth="600"
+        d:DesignHeight="450"
+        x:Class="ProjManager.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Background="Transparent"
+        TransparencyLevelHint="AcrylicBlur"
+        ExtendClientAreaToDecorationsHint="True"
+        Width="800"
+        Title="Proj Manager">
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+    <Panel>
+        <ExperimentalAcrylicBorder>
+            <ExperimentalAcrylicBorder.Material>
+                <ExperimentalAcrylicMaterial BackgroundSource="Digger"
+                                             TintColor="Black"
+                                             TintOpacity="1.0"
+                                             MaterialOpacity="0.64"/>
+            </ExperimentalAcrylicBorder.Material>
+        </ExperimentalAcrylicBorder>
+        <DockPanel Margin="5">
+            <StackPanel DockPanel.Dock="Top"
+                        Orientation="Horizontal"
+                        Margin="0,10">
+                <TextBlock VerticalAlignment="Center"
+                           Padding="10,0,20,0"
+                           FontWeight="Bold">Search:</TextBlock>
+                <TextBox MinWidth="200"
+                         HorizontalAlignment="Left"
+                         PropertyChanged="OnSearchInteraction"
+                         Name="searchBox"
+                         Text="{Binding SearchText}"/>
+                <ComboBox SelectedIndex="0"
+                          MaxDropDownHeight="100"
+                          SelectionChanged="ChangeSortCriteria">
+                    <ComboBoxItem>Sort By Last Access</ComboBoxItem>
+                    <ComboBoxItem>Sort By Creation</ComboBoxItem>
+                    <ComboBoxItem>Sort By Name</ComboBoxItem>
+                </ComboBox>
+                <ComboBox SelectedIndex="0"
+                          MaxDropDownHeight="100"
+                          SelectionChanged="ChangeSortOrder">
+                    <ComboBoxItem>Descending</ComboBoxItem>
+                    <ComboBoxItem>Ascending</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            <ListBox ScrollViewer.VerticalScrollBarVisibility="Auto"
+                     Background="Transparent"
+                     ItemsSource="{Binding SearchResults}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <ContentControl Content="{Binding}"/>
+                            <Separator Margin="0,20,0,0" x:Name="Separator"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </DockPanel>
+    </Panel>
+</Window>

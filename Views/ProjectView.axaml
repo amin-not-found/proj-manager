@@ -1,0 +1,29 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:ProjManager.ViewModels"
+             x:Class="ProjManager.Views.ProjectView"
+             x:DataType="vm:ProjectViewModel">
+    <DockPanel LastChildFill="false">
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="{Binding Name}" Padding="0,10"/>
+            <TextBlock Text="{Binding TagsText}"
+                       TextWrapping="Wrap"
+                       MaxWidth="500"
+                       Foreground="#999999"
+                       FontWeight="Regular"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
+            <Button Margin="10,0" Click="OpenInEditor">
+                <PathIcon Data="{StaticResource code}"/>
+            </Button>
+            <Button Margin="10,0" Click="OpenInExplorer">
+                <PathIcon Data="{StaticResource folder_open}"/>
+            </Button>
+            <Button Margin="10,0" Click="EditProject">
+                <PathIcon Data="{StaticResource edit}"/>
+            </Button>
+        </StackPanel>
+    </DockPanel>
+</UserControl>
