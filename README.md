@@ -1,6 +1,6 @@
 # ProjManager
 An app to manage project directories.
-This is a graphical port of [cli-project-manager](https://github.com/amin-pro/cli-project-manager).
+This is a graphical port of [cli-project-manager](https://github.com/amin-not-found/cli-project-manager).
 
 ## Usage
 You need dotnet sdk to run this project. You can build it like this:
